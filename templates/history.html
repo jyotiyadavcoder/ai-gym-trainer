@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block title %}History - AI Gym Trainer{% endblock %}
+
+{% block content %}
+<div class="wide">
+    <h2>Your Workout History</h2>
+
+    <div class="summary-row">
+        <div class="summary-box"><span>Workouts</span><strong>{{ summary.total_workouts }}</strong></div>
+        <div class="summary-box"><span>Total Reps</span><strong>{{ summary.total_reps }}</strong></div>
+        <div class="summary-box"><span>Calories</span><strong>{{ summary.total_calories|round(1) }}</strong></div>
+    </div>
+
+    {% if rows %}
+    <table>
+        <tr>
+            <th>Date</th><th>Exercise</th><th>Reps</th><th>Time (s)</th><th>Calories</th>
+        </tr>
+        {% for r in rows %}
+        <tr>
+            <td>{{ r.workout_date.strftime('%d %b %Y, %I:%M %p') }}</td>
+            <td>{{ r.exercise }}</td>
+            <td>{{ r.reps }}</td>
+            <td>{{ r.duration_sec }}</td>
+            <td>{{ r.calories }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+        <p class="muted">No workouts yet. Go to Workout and finish a set!</p>
+    {% endif %}
+</div>
+{% endblock %}

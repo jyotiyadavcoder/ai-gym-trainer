@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Login - AI Gym Trainer{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>Welcome!</h2>
+    <p class="muted">Enter your name to start. New name? A profile is created automatically.</p>
+
+    {% if error %}<p class="error">{{ error }}</p>{% endif %}
+
+    <form method="POST">
+        <input type="text" name="name" placeholder="Your name" required>
+        <input type="number" name="weight" placeholder="Weight in kg (optional)" step="0.1" min="20" max="250">
+        <button type="submit" class="btn start">Continue</button>
+    </form>
+</div>
+{% endblock %}

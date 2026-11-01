@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Workout - AI Gym Trainer{% endblock %}
+
+{% block content %}
+<header>
+    <h1 id="exerciseTitle">Bicep Curl</h1>
+    <p id="exerciseHint">Stand sideways, left arm towards the camera</p>
+</header>
+
+<main>
+    <div class="video-box">
+        <img id="video" src="" alt="Live video">
+        <div id="placeholder">Choose an exercise and press <b>Start</b></div>
+    </div>
+
+    <div class="panel">
+        <label class="field">Exercise
+            <select id="exerciseSelect">
+                <option value="bicep_curl">Bicep Curl</option>
+                <option value="squat">Squat</option>
+                <option value="pushup">Push-up</option>
+            </select>
+        </label>
+        <label class="field">Side facing camera
+            <select id="sideSelect">
+                <option value="left">Left</option>
+                <option value="right">Right</option>
+            </select>
+        </label>
+
+        <div class="stat"><span>Reps</span><strong id="reps">0</strong></div>
+        <div class="stat"><span>Stage</span><strong id="stage">-</strong></div>
+        <div class="stat"><span>Angle</span><strong id="angle">0</strong></div>
+        <div class="stat"><span>Time (s)</span><strong id="elapsed">0</strong></div>
+        <p id="feedback">Press Start</p>
+
+        <div class="buttons">
+            <button id="startBtn" class="btn start">Start</button>
+            <button id="stopBtn" class="btn stop" disabled>Stop</button>
+        </div>
+        <p id="summary"></p>
+    </div>
+</main>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/workout.js') }}"></script>
+{% endblock %}
